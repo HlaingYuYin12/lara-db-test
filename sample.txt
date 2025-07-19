@@ -1,0 +1,46 @@
+controller ---> php artisan make:controller PostController --resource
+//process main
+
+view ---> php artisan make:view customer.customerList
+//user main
+
+model ---> php artisan make:model User //don't use plural like Users
+//database main(management)
+
+
+select * from user ;
+User::get();
+
+User::find($id)->update($data);
+
+
+
+DB connection
+*************
+-crete database in phpMyAdmin
+.env ---> connection choose
+
+DB command
+**********
+php artisan migrate             ---> include cahce,jobs,users tables
+                                     upload all tables from database
+
+php artisan migrate:rollback    ---> တင်ထားတဲ့tableပြန်ဆွဲချ phpMyAdmin မှာ migrations ပဲကျန်မယ်
+
+
+php artisan migrate:status      ---> ဘယ်tableတွေတင်ဖို့လိုလဲ
+
+
+Table create
+*********
+php artisan make:migration create_flights_table ----> must be plural in mid
+php artisan migrate             ---> upload all tables to phpMyAdmin
+
+
+why we need rollback???
+****************
+if we want to add field ,there is no changes when migrate
+
+
+php artisan migrate:refresh     ----> rollback and then migrate (or)
+php artisan migrate:fresh       ----> rollback and then migrate

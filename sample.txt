@@ -44,3 +44,28 @@ if we want to add field ,there is no changes when migrate
 
 php artisan migrate:refresh     ----> rollback and then migrate (or)
 php artisan migrate:fresh       ----> rollback and then migrate
+
+
+
+Admin >>> View | Controller | (Table | Model)
+
+Making Model
+***********
+php artisan make:model User             >>> model create
+php artisan make:model User -m  (or) --migration        >>> model createand table create
+                                                            (don't add 's') and don't use keyword(like string,class)
+php artisan make:model User -mc            >>> model , controller , table create
+
+
+
+Clear cache
+***********
+Browser cache ----> from history or loading
+
+Project cache ---->  php artisan config:clear
+                     php artisan cache:clear
+                     php artisan config:cache (3 times)
+                     php artisan view:clear
+                     php artisan route:clear
+
+error ---> key generate (cause of network error)  ----> php artisan key:generate

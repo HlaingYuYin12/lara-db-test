@@ -9,4 +9,4 @@ Route::get('/', function () {
 
 
 //Post controller
-Route::get('post/list',[PostController::class, 'index'])->name('postList'); //import ***
+Route::get('post/create',[PostController::class, 'create'])->name('postCreate');

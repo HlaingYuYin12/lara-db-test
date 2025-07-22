@@ -69,3 +69,7 @@ Project cache ---->  php artisan config:clear
                      php artisan route:clear
 
 error ---> key generate (cause of network error)  ----> php artisan key:generate
+
+
+
+Read laravel table data type documentation

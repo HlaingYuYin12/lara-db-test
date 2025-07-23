@@ -10,3 +10,6 @@ Route::get('/', function () {
 
 //Post controller
 Route::get('post/create',[PostController::class, 'create'])->name('postCreate');
+
+Route::get('post/list',[PostController::class, 'list'])->name('postList');
+

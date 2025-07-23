@@ -73,3 +73,19 @@ error ---> key generate (cause of network error)  ----> php artisan key:generate
 
 
 Read laravel table data type documentation
+
+
+
+Database seeding
+****************
+fake data ထည့်တာ
+1. default data
+2. performance test (many data testing)
+
+seeder   ----> need factory + seeder
+factory     ---->   php artisan make:factory PostFactory
+seeder      ---->   php artisan make:seeder PostFactory
+
+then ----> php artisan db:seed
+
+rollback, table , migrate, seeding ===> php artisan migrate:fresh --seed

@@ -10,5 +10,5 @@ class Post extends Model
     //important****
     use HasFactory;
 
-    protected $fillable = ['name','email','phone','location'];
+    protected $fillable = ['name','email','phone','location','today_date'];
 }

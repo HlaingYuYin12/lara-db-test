@@ -4,60 +4,61 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class PostController
 {
     //create post
-    public function create(){
-        // dd('create');
+    // public function create(){
+    //     // dd('create');
 
-        //go to table
-        // Post::create([
-        //     'name' => 'hlaing yu yin',
-        //     'email' => 'hlaingyuyin28@gmail.com',
-        //     'phone' => '45580220'
-        // ]);
+    //     //go to table
+    //     // Post::create([
+    //     //     'name' => 'hlaing yu yin',
+    //     //     'email' => 'hlaingyuyin28@gmail.com',
+    //     //     'phone' => '45580220'
+    //     // ]);
 
-        //or
+    //     //or
 
-        // $data = [
-        //     'name' => 'hlaing yu yin',
-        //     // 'email' => 'hlaingyuyin28@gmail.com',
-        //     'phone' => '45580220'
-        // ];
+    //     // $data = [
+    //     //     'name' => 'hlaing yu yin',
+    //     //     // 'email' => 'hlaingyuyin28@gmail.com',
+    //     //     'phone' => '45580220'
+    //     // ];
 
-        // Post::create($data);
+    //     // Post::create($data);
 
-        // dd('create success');
-
-
-        //table
-        // $data1 = DB::table('posts')->get();
-        // dd($data1->toArray());
+    //     // dd('create success');
 
 
-        //or
-        //raw query
-        // $data3 = DB::select('select * from posts');
-        // dd($data3);
+    //     //table
+    //     // $data1 = DB::table('posts')->get();
+    //     // dd($data1->toArray());
 
 
-        // or
-        //model (mostly use)
-        // $data2 = Post::get();
-        // dd($data2->toArray());
-
-        //Post::where('age','<','15')->get();
-        // Post::findOrFail($id)->delete();
-        // Post::where('id',$id)->delete();
-
-        $data = Post::get();
-        // dd ($data);  //collection
-        dd ($data->toArray());  // array
+    //     //or
+    //     //raw query
+    //     // $data3 = DB::select('select * from posts');
+    //     // dd($data3);
 
 
-    }
+    //     // or
+    //     //model (mostly use)
+    //     // $data2 = Post::get();
+    //     // dd($data2->toArray());
+
+    //     //Post::where('age','<','15')->get();
+    //     // Post::findOrFail($id)->delete();
+    //     // Post::where('id',$id)->delete();
+
+    //     $data = Post::get();
+    //     // dd ($data);  //collection
+    //     dd ($data->toArray());  // array
+
+
+    // }
 
     public function list(){
         // $data = Post::get();   //collection  ---->
@@ -83,6 +84,7 @@ class PostController
         //             ->get();
 
 
+        // Read
         $data = Post::select('name as userName','email')
                     ->where('name','like','%Wil%')   //search with LIKE %---%
                     ->get();
@@ -103,4 +105,44 @@ class PostController
 
     }
 
+
+    public function create(){
+
+        //Create
+        $data = $this->requestPostData();
+
+        Post::create($data);
+
+        return 'success';
+    }
+
+    //request post data
+    private function requestPostData(){
+        return [
+            'name' => 'yu yin_update_test',
+            'email' => 'hlaingyuyin28@gmail.com',
+            'phone' => '09375767925',
+            'location' => 'ygn',
+            'today_date' => Carbon::now()
+        ];
+    }
+
+    public function delete($id){
+        // dd($id);
+
+        //Delete
+        // Post::where('id',$id)->delete(); //or
+        Post::findOrFail($id)->delete();
+        return 'delete success';
+
+    }
+
+    public function update($id){
+
+        //Update
+        $data = $this->requestPostData();
+        Post::find($id)->update($data);
+        return 'update success';
+
+    }
 }
